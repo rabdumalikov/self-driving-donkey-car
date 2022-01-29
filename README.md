@@ -11,15 +11,16 @@ https://user-images.githubusercontent.com/29214569/151658079-6bdf933c-10d4-4b5c-
 
 
 In our solution, we used two different versions of donkeycar 4.2.0 and 4.3.0.
-For training, we used 4.3.0 because augmentations and transformations are working correctly in that version.
-However, it is not the case for version 4.2.0.
+For training models, we used version 4.3.0 due to the availability of augmentations and transformations.
 
-On the car, we used 4.2.0. We could also switch to 4.3.0. Then in such a case, it would be easier to maintain a single code base. 
-Right now, we have to maintain the same set of classes for *Behavioral* and *Linear* models, which is far from convenient. But switching to 4.3.0 would require dealing with some errors.
+***Note that:** In version 4.2.0, augmentations and transformations are not implemented.*
 
-This folder **car_src** contains code that should be used on the car, and the folder **train_src** should be used for training.
+On the car, we used 4.2.0. However, it makes more sense to switch to 4.3.0 because maintaining a single code base would be easier.
+Right now, we have to maintain the same set of classes for *Behavioral* and *Linear* models, which is far from convenient. 
+The only thing that stopped us from switching to 4.3.0 was the tedious integration process.
+
 # Data
-Data for the training both models can be found [here](https://tartuulikool-my.sharepoint.com/:u:/g/personal/abdumali_ut_ee/Efh7AFRC8W1EiCAOUMqieiABL5MP3ss03D6UHnHFZ-c0BQ?e=e3puE2).
+You can find the training data of both models [here](https://tartuulikool-my.sharepoint.com/:u:/g/personal/abdumali_ut_ee/Efh7AFRC8W1EiCAOUMqieiABL5MP3ss03D6UHnHFZ-c0BQ?e=e3puE2).
 
 # Installation for training
 
@@ -35,7 +36,7 @@ For installing, donkeycar software, you have to follow steps from the official [
   cd cd self-driving-donkey-car/train_src/mycar/
   cp * <path_mycar_folder>
   ```
-* **Data processing:**
+* **Data preprocessing:**
   ```
   # THIS STEP ONLY REQUIRED FOR THE BEHAVIOR MODEL
   # Since collecting data with consistent behavior information is hard, we 
@@ -69,21 +70,21 @@ With those steps, you would be able to train **Behavioral** and **Linear** model
 # Installation inside the car
 
   * **Installing prerequisites:**
-  ```
-  cd self-driving-donkey-car/car_src/donkeycar/
-  cp -r * /home/pi/donkeycar/donkeycar/
+    ```
+    cd self-driving-donkey-car/car_src/donkeycar/
+    cp -r * /home/pi/donkeycar/donkeycar/
 
-  cd cd self-driving-donkey-car/car_src/mycar/
-  cp * /home/pi/mycar/
-  ```
+    cd cd self-driving-donkey-car/car_src/mycar/
+    cp * /home/pi/mycar/
+    ```
   * **Start autopilot:**
-  ```
-  # for Linear model
-  python manage.py drive --model models/linear.h5 --type customlinear --js
-  
-  # for Behavior model
-  python manage.py drive --model models/behavior.h5 --type custombehavior --js
-  ```
+    ```
+    # for Linear model
+    python manage.py drive --model models/linear.h5 --type customlinear --js
+
+    # for Behavior model
+    python manage.py drive --model models/behavior.h5 --type custombehavior --js
+    ```
 
 # How it works:
 
@@ -135,10 +136,10 @@ It is almost default behavior model which goes with donkeycar. We created our ow
 ### How we collected data?
 At first, we tried to collect data properly by pressing the correct state before turning. This approach didn't work because of human error, and as a result, the data was inconsistent. Afterward, we wrote a script that consistently put behavior states on steering angle value.
 
-### Cropping
+### Cropping:
 Was the same as for **CustomLinear**.
 
-## How many images we used?
+### How many images we used?
 We used around 350k images.
 
 ### Takeout:
