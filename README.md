@@ -29,29 +29,35 @@ For installing, donkeycar software, you have to follow steps from the official [
 **Note that:** you have to use version 4.3.0, i.e., the master branch.
 
 * **Installing prerequisites:**
-  ```sh
-  cd self-driving-donkey-car/train_src/donkeycar/
-  cp -r * <path_to_folder_inside_installed_donkey> # for me it is /home/Rustam/donkeycar/donkeycar
-
-  cd self-driving-donkey-car/train_src/mycar/
-  cp * <path_mycar_folder>
-  ```
+  * Integrate modifications inside **donkeycar** folder:
+    ```sh
+    cd self-driving-donkey-car/train_src/donkeycar/
+    cp -r * <path_to_folder_inside_installed_donkey> # for me it is /home/Rustam/donkeycar/donkeycar
+    ```
+  * Integrate modifications inside **mycar** folder:
+    ```sh    
+    cd self-driving-donkey-car/train_src/mycar/
+    cp * <path_mycar_folder>
+    ```
 * **Data preprocessing:**
-  ```sh
-  # THIS STEP ONLY REQUIRED FOR THE BEHAVIOR MODEL
-  # Since collecting data with consistent behavior information is hard, we 
-  # automated this process and discovered a good position for behavioral 
-  # states that worked out quite well.
-  python set_correct_behavior_offset.py <path_to_data>
   
-  # Remove distortion from images and crop them.
-  # For big dataset it might take up to two hours.
-  python transform_images.py <path_to_data>
-  
-  # This script was written by Leo. All credits to him.
-  # It flips the images and adjust corresponding meta information in catalogs. 
-  python flipper.py -c <path_to_mycar> -t <path_to_data>
-  ```
+  * **FOR THE BEHAVIOR MODEL ONLY:**
+    ```sh
+    # Collecting data with consistent behavior information is challenging. We automated this 
+    # process and discovered a good position for behavioral states that worked out 
+    # quite well during competition because the car was acting instantaneously.
+    python set_correct_behavior_offset.py <path_to_data>
+    ```
+  * **Remove distortion from images and crop them:**
+    ```sh
+    # For big dataset it might take up to two hours.
+    python transform_images.py <path_to_data>
+    ```
+  * **Flips images and adjust the corresponding meta-information in catalogs:**
+    ```sh
+    # Leo wrote this script. All credits go to him.
+    python flipper.py -c <path_to_mycar> -t <path_to_data>
+    ```
 * **Training:**
 
   For some reason, during the training in version 4.3.0 the argument of *--type* option doesn't apply. The workaround for
@@ -70,13 +76,16 @@ With those steps, you would be able to train **Behavioral** and **Linear** model
 # Installation inside the car
 
   * **Installing prerequisites:**
-    ```sh
-    cd self-driving-donkey-car/car_src/donkeycar/
-    cp -r * /home/pi/donkeycar/donkeycar/
-
-    cd self-driving-donkey-car/car_src/mycar/
-    cp * /home/pi/mycar/
-    ```
+    * Integrate modifications inside **donkeycar** folder:
+      ```sh
+      cd self-driving-donkey-car/car_src/donkeycar/
+      cp -r * /home/pi/donkeycar/donkeycar/
+      ```
+    * Integrate modifications inside **mycar** folder:
+      ```sh    
+      cd self-driving-donkey-car/car_src/mycar/
+      cp * /home/pi/mycar/
+      ```
   * **Start autopilot:**
     ```sh
     # for Linear model
@@ -89,9 +98,8 @@ With those steps, you would be able to train **Behavioral** and **Linear** model
 # How it works:
 
 ## Linear model
-Basically it is default linear model which goes with donkeycar. We created our own class 
-**CustomLinear** which 99% is default linear model. The only thing we changed. Before the 
-inference we applyid removing distoring and then cropped undistorted image. That's it.
+We created our own class **CustomLinear** which 99% is default linear model. 
+The only thing we changed was that we added before the inference image preprocessing steps such as removing distortion and cropping an image.
 
 ### Why do we removed distortion from the image?
 First of all, our solution is based on [NVIDIA end-to-end driving](https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf), where it is one of the 
@@ -125,8 +133,8 @@ We don't have an answer for that. In our competition models, we applied image br
 * Use higher resolution(320x240 or above). At least the resolution should be 320x240 because you won't be able to remove distortion for the lower resolution. Another point for higher resolution is that later you can downscale your image without losing quality, but it won't be true for upscaled images.
 
 ## Behavior model
-It is almost default behavior model which goes with donkeycar. We created our own class 
-**CustomBehavioral** which 93% similar to default model. 
+For **Behavior model**, we also created the custom class **CustomBehavioral** based on the default behavior model. 
+But we did a lot more work to make it work.
 
 ### Things that we changes:
 * Removed throttle prediction, because the data for that are inconsistent. 
