@@ -37,7 +37,7 @@ For installing, donkeycar software, you have to follow steps from the official [
   * Integrate modifications inside **mycar** folder:
     ```sh    
     cd self-driving-donkey-car/train_src/mycar/
-    cp * <path_mycar_folder>
+    cp * <path_to_mycar_folder>
     ```
 * **Data preprocessing:**
   
@@ -107,32 +107,32 @@ preprocessing step that they used. On top of that, in our tests, we saw that per
 a model with distorted images is far from great. But it could be because of lighting conditions too.
 
 ### How do we cropped our images?
-When you try to find good cropping, the main thing you need to know is that you have to remove useless information from the images. You can get it right only empirically. But sometimes useless information might be useful. For example, during the competition for task 1 second-round, our car was always hitting a small toy at the end of the track. We discovered the reason later. We cropped from the bottom by the amount that our car couldn't see that toy. Before we thought: "why do we need that much information about the floor?".
+When you try to find good cropping, the main thing you need to know is that you have to remove useless information from the images. You can get it right only empirically. But sometimes useless information might be useful. For example, during the competition for task 1 second-round, our car was always hitting a small toy at the end of the track. We discovered the reason for that later. We cropped from the bottom by the amount that our car couldn't see that toy. Before we thought: "why do we need that much information about the floor?".
 
 Nevertheless, here is crop that we used **img=img[117:120,10:310]**.
 
 When you remove distortion from the image, you have less freedom for cropping.
 Consider the image below. You can see that distortion is only removed around the center.
+Thus it is the only part that makes sense to crop.
 
 **For Example:**
 
 <img src= "https://user-images.githubusercontent.com/29214569/151660471-8590a863-2ac3-4e92-ad08-ec041f77f2d2.jpeg" title="Undistorted image" width="600" height="400">
 
 ## How many images did we use?
-We trained on less than 50k images, but the performance was terrible. With such a small number of
+When we trained on less than 50k images, the performance was terrible. With such a small number of
 images, the car could not generalize track at all. But it was possible when we used around 100k images. 
 In such a case, our car could drive in the configuration that it didn't see before. But increasing
-the number of images doesn't help. I tried a model that was trained on 300k images. There was no difference between models trained on 100k images and 300k images. For competition linear model we used 150k images.
-
+the number of images doesn't help. I tried a model that was trained on 300k images. There was no difference between models trained on 100k images and 300k images. For the competition for the task1 model, we used approximately 150k images.
 
 ### How to fight lighting conditions?
 Somehow the lighting conditions affect the performance of our models drastically even though we collected data during different times of the day.
 We don't have an answer for that. In our competition models, we applied image brightness augmentation(available in 4.3.0). Maybe it helped.
 
-### Main takeaway:
+### Main takeaways:
 * The quantity isn't essential if the quality of your data is bad. *For better performance, steering should be smooth.*  The main reason for that is that we saw that our car was mainly doing sharp turns, leading to collisions in certain situations. But it is impossible to get smooth steering in the track with sharp turns.
 * Use a smaller frame rate(10 frames per second) during data collection since with higher frame rate you would get useless images with pretty much the same information.
-* Use higher resolution(320x240 or above). At least the resolution should be 320x240 because you won't be able to remove distortion for the lower resolution. Another point for higher resolution is that later you can downscale your image without losing quality, but it won't be true for upscaled images.
+* Use higher resolution(320x240 or above). The resolution should be at least 320x240 because you won't be able to remove distortion for the lower resolutions. Another point for higher resolution is that later you can downscale your image without losing quality, but it won't be true if you need to upscale images.
 
 ## Behavior/Task2 model
 For **Behavior model**, we also created the custom class **CustomBehavioral** based on the default behavior model. 
@@ -141,11 +141,11 @@ But we did a lot more work to make it work.
 ### Things that we added/changed:
 * Removed throttle prediction, because the data for that are inconsistent. 
 * Applied image augmentation before inference such as removing distortion and cropping.
-* Mapped left and right states to two different buttons for easy control. On top of that, left and right states are on a 0.30ms timer, after which the car automatically switched to a straight state. The main reason for that is that we want to be in a correct state longer during long turns. That's why by pressing a particular state button several times, the timer adds up.
-* Our car was stucking during right turnes, so for short period of time we increased throttle.
+* Mapped *left* and *right* states to two different buttons for easier control. On top of that, *left* and *right* states are on a 0.30ms timer, after which the car automatically switches to a straight state. The main reason for using a timer is that we want to control the duration of being in a specific state, for example, during long turns. That's why by pressing a particular state button several times, the timer adds up.
+* Our car tends to be stuck during right turns, so we increase the throttle for a short time.
 
 ### How did we collect data?
-At first, we tried to collect data properly by pressing the correct state before turning. This approach didn't work because of human error, and as a result, the data was inconsistent. Afterward, we wrote a script that consistently put behavior states on steering angle value.
+At first, we tried to collect data properly by pressing the correct state before turning. This approach didn't work because of human error, and as a result, the data was inconsistent. Afterward, we wrote a script that consistently put behavior states based on steering angle value.
 
 ### Cropping:
 Was the same as for **CustomLinear**.
@@ -153,8 +153,8 @@ Was the same as for **CustomLinear**.
 ### How many images did we use?
 We used around 350k images.
 
-### Main takeaway:
-* Overall, it is hard to train a behavior model to self-drive without any nudges.
+### Main takeaways:
+* Overall, it is hard to train a behavior model to drive on its own without any nudges.
 * Behavior states should be consistent with your data.
   
 # Main Contributors
