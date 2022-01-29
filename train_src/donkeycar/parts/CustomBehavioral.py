@@ -56,7 +56,7 @@ class CustomBehavioral(KerasBehavioral):
                  num_behavior_inputs: int = 3):
         self.num_behavior_inputs = num_behavior_inputs
 
-        super().__init__(interpreter, input_shape, throttle_range)
+        super().__init__(interpreter, input_shape, throttle_range, num_behavior_inputs=self.num_behavior_inputs)
 
     def create_model(self):
         return custom_bhv(num_bvh_inputs=self.num_behavior_inputs,
