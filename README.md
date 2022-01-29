@@ -29,15 +29,15 @@ For installing, donkeycar software, you have to follow steps from the official [
 **Note that:** you have to use version 4.3.0, i.e., the master branch.
 
 * **Installing prerequisites:**
-  ```
+  ```sh
   cd self-driving-donkey-car/train_src/donkeycar/
   cp -r * <path_to_folder_inside_installed_donkey> # for me it is /home/Rustam/donkeycar/donkeycar
 
-  cd cd self-driving-donkey-car/train_src/mycar/
+  cd self-driving-donkey-car/train_src/mycar/
   cp * <path_mycar_folder>
   ```
 * **Data preprocessing:**
-  ```
+  ```sh
   # THIS STEP ONLY REQUIRED FOR THE BEHAVIOR MODEL
   # Since collecting data with consistent behavior information is hard, we 
   # automated this process and discovered a good position for behavioral 
@@ -56,7 +56,7 @@ For installing, donkeycar software, you have to follow steps from the official [
 
   For some reason, during the training in version 4.3.0 the argument of *--type* option doesn't apply. The workaround for
   that is to set the type manually in the file donkeycar/donkeycar/utils.py in line 461.
-  ```
+  ```sh
   # Behavior model
   donkey train --tub <path_to_behavior_data>/* --model models/<model_name> --type custombehavior
 
@@ -70,15 +70,15 @@ With those steps, you would be able to train **Behavioral** and **Linear** model
 # Installation inside the car
 
   * **Installing prerequisites:**
-    ```
+    ```sh
     cd self-driving-donkey-car/car_src/donkeycar/
     cp -r * /home/pi/donkeycar/donkeycar/
 
-    cd cd self-driving-donkey-car/car_src/mycar/
+    cd self-driving-donkey-car/car_src/mycar/
     cp * /home/pi/mycar/
     ```
   * **Start autopilot:**
-    ```
+    ```sh
     # for Linear model
     python manage.py drive --model models/linear.h5 --type customlinear --js
 
