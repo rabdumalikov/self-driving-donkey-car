@@ -32,13 +32,6 @@ DRIVE_TRAIN_TYPE = "MM1"
 JOYSTICK_MAX_THROTTLE = 1.0
 JOYSTICK_THROTTLE_DIR = -1.0
 
-# ROI_CROP_TOP = 60                    #the number of rows of pixels to ignore on the top of the image
-# ROI_CROP_BOTTOM = 10                 #the number of rows of pixels to ignore on the bottom of the image
-# ROI_CROP_LEFT=0
-# ROI_CROP_RIGHT=0
-
-#AUGMENTATIONS = ['MULTIPLY', 'BLUR']
-#TRANSFORMATIONS = ['CROP']
 
 CONTROLLER_TYPE='F710'           #(ps3|ps4)
 DRIVE_LOOP_HZ = 10
