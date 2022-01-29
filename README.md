@@ -118,7 +118,7 @@ Consider the image below. You can see that distortion is only removed around the
 
 <img src= "https://user-images.githubusercontent.com/29214569/151660471-8590a863-2ac3-4e92-ad08-ec041f77f2d2.jpeg" title="Undistorted image" width="600" height="400">
 
-## How many images we used?
+## How many images did we use?
 We trained on less than 50k images, but the performance was terrible. With such a small number of
 images, the car could not generalize track at all. But it was possible when we used around 100k images. 
 In such a case, our car could drive in the configuration that it didn't see before. But increasing
@@ -129,7 +129,7 @@ the number of images doesn't help. I tried a model that was trained on 300k imag
 Somehow the lighting conditions affect the performance of our models drastically even though we collected data during different times of the day.
 We don't have an answer for that. In our competition models, we applied image brightness augmentation(available in 4.3.0). Maybe it helped.
 
-### Takeout:
+### Main takeaway:
 * The quantity isn't essential if the quality of your data is bad. *For better performance, steering should be smooth.*  The main reason for that is that we saw that our car was mainly doing sharp turns, leading to collisions in certain situations. But it is impossible to get smooth steering in the track with sharp turns.
 * Use a smaller frame rate(10 frames per second) during data collection since with higher frame rate you would get useless images with pretty much the same information.
 * Use higher resolution(320x240 or above). At least the resolution should be 320x240 because you won't be able to remove distortion for the lower resolution. Another point for higher resolution is that later you can downscale your image without losing quality, but it won't be true for upscaled images.
@@ -138,26 +138,29 @@ We don't have an answer for that. In our competition models, we applied image br
 For **Behavior model**, we also created the custom class **CustomBehavioral** based on the default behavior model. 
 But we did a lot more work to make it work.
 
-### Things that we changes:
+### Things that we added/changed:
 * Removed throttle prediction, because the data for that are inconsistent. 
 * Applied image augmentation before inference such as removing distortion and cropping.
 * Mapped left and right states to two different buttons for easy control. On top of that, left and right states are on a 0.30ms timer, after which the car automatically switched to a straight state. The main reason for that is that we want to be in a correct state longer during long turns. That's why by pressing a particular state button several times, the timer adds up.
 * Our car was stucking during right turnes, so for short period of time we increased throttle.
 
-### How we collected data?
+### How did we collect data?
 At first, we tried to collect data properly by pressing the correct state before turning. This approach didn't work because of human error, and as a result, the data was inconsistent. Afterward, we wrote a script that consistently put behavior states on steering angle value.
 
 ### Cropping:
 Was the same as for **CustomLinear**.
 
-### How many images we used?
+### How many images did we use?
 We used around 350k images.
 
-### Takeout:
+### Main takeaway:
 * Overall, it is hard to train a behavior model to self-drive without any nudges.
 * Behavior states should be consistent with your data.
   
+# Main Contributors
+Rustam Abdumalikov and Aral Acikalin
 
-
+# Licence
+Boost Software License( Version 1.0 )
 
 
