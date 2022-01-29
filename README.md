@@ -1,5 +1,15 @@
 # self-driving-donkey-car
 
+
+## TASK 1(full self-driving with collision avoidance):
+https://user-images.githubusercontent.com/29214569/151657866-a79e313b-0faa-4d0e-8150-36f45760b465.mp4
+
+## TASK 2(self-driving with steering desire):
+https://user-images.githubusercontent.com/29214569/151658079-6bdf933c-10d4-4b5c-98f0-cadd49be2656.mp4
+
+
+
+
 In our solution, we used two different versions of donkeycar 4.2.0 and 4.3.0.
 For training, we used 4.3.0 because augmentations and transformations are working correctly in that version.
 However, it is not the case for version 4.2.0.
