@@ -85,6 +85,42 @@ With those steps, you would be able to train **Behavioral** and **Linear** model
   python manage.py drive --model models/behavior.h5 --type custombehavior --js
   ```
 
+# How it works:
+
+## Linear model
+Basically it is default linear model which goes with donkeycar. We created our own class 
+**CustomLinear** which 99% is default linear model. The only thing we changed. Before the 
+inference we applyid removing distoring and then cropped undistorted image. That's it.
+
+## Why do we removed distortion from the image?
+First of all our solution is based on [NVIDIA end-to-end driving](https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf), where it is one of the 
+preprossing that they used so are we. On top of that, we imperically saw that performance of the
+model with distorted images is far from great. But it could be because of lightning conditions too.
+
+## How do we cropped our images?
+When you try to find good cropping, the main thing you need to know is that you have to remove useless information from the images. You can get it right only empirically. But sometimes useless information might be useful. For example, during the competition for task 1 second-round, our car was always hitting a small toy at the end of the track. We discovered the reason later. We cropped from the bottom by the amount that our car couldn't see that toy because we thought: "why do we need that much information about the floor?".
+
+When you remove distortion from the image, you have less freedom for cropping.
+
+**For Example:**
+![undist_image](https://user-images.githubusercontent.com/29214569/151660471-8590a863-2ac3-4e92-ad08-ec041f77f2d2.jpeg)
+Our cropping was **img=img[117:120,10:310]**.
+
+## How many images we used?
+We trained on less than 50k images, but the performance was terrible. With such a small number of
+images, the car could not generalize track at all. But it was possible when we used around 100k images. 
+In such a case, our car could drive in the configuration that it didn't see before. But increasing
+the number of images doesn't help. I tried a model that was trained on 300k images. There was no difference between models trained on 100k images and 300k images. 
+
+## Takeout:
+* The quantity isn't essential if the quality of your data is bad. *For better performance, steering should be smooth.*  The main reason for that is that we saw that our car was mainly doing sharp turns, leading to collisions in certain situations. But it is impossible to get smooth steering in the track with sharp turns.
+* Use a smaller frame rate(10 frames per second) during data collection since with higher frame rate you would get useless images with pretty much the same information.
+* Use higher resolution(320x240 or above). At least the resolution should be 320x240 because you won't be able to remove distortion for the lower resolution. Another point for higher resolution is that later you can downscale your image without losing quality, but it won't be true for upscaled images.
+
+
+
+
+
 
   
 
