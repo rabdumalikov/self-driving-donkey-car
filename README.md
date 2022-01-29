@@ -97,7 +97,7 @@ With those steps, you would be able to train **Behavioral** and **Linear** model
 
 # How it works:
 
-## Linear model
+## Linear/Task1 model
 We created our own class **CustomLinear** which 99% is default linear model. 
 The only thing we changed was that we added before the inference image preprocessing steps such as removing distortion and cropping an image.
 
@@ -134,7 +134,7 @@ We don't have an answer for that. In our competition models, we applied image br
 * Use a smaller frame rate(10 frames per second) during data collection since with higher frame rate you would get useless images with pretty much the same information.
 * Use higher resolution(320x240 or above). At least the resolution should be 320x240 because you won't be able to remove distortion for the lower resolution. Another point for higher resolution is that later you can downscale your image without losing quality, but it won't be true for upscaled images.
 
-## Behavior model
+## Behavior/Task2 model
 For **Behavior model**, we also created the custom class **CustomBehavioral** based on the default behavior model. 
 But we did a lot more work to make it work.
 
