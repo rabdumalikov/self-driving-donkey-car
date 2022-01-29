@@ -465,7 +465,7 @@ def get_model_by_type(model_type: str, cfg: 'Config') -> 'KerasPilot':
         kl = KerasLinear(interpreter=interpreter, input_shape=input_shape)
     elif used_model_type == "custombehavior":
         kl = CustomBehavioral(interpreter=interpreter, input_shape=input_shape, num_behavior_inputs=len(cfg.BEHAVIOR_LIST))
-    elif used_model_type == "deltalinear":
+    elif used_model_type == "customlinear":
         kl = CustomLinear(interpreter=interpreter, input_shape=input_shape)
     elif used_model_type == "categorical":
         kl = KerasCategorical(
