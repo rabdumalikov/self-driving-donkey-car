@@ -112,9 +112,11 @@ When you try to find good cropping, the main thing you need to know is that you 
 Nevertheless, here is crop that we used **img=img[117:120,10:310]**.
 
 When you remove distortion from the image, you have less freedom for cropping.
+Consider the image below. You can see that distortion is only removed around the center.
 
-**For Example:**(The algorithm( from OpenCV ) that we used removed distortion only around the center)
-![undist_image](https://user-images.githubusercontent.com/29214569/151660471-8590a863-2ac3-4e92-ad08-ec041f77f2d2.jpeg)
+**For Example:**
+
+<img src= "https://user-images.githubusercontent.com/29214569/151660471-8590a863-2ac3-4e92-ad08-ec041f77f2d2.jpeg" title="Undistorted image" width="600" height="400">
 
 ## How many images we used?
 We trained on less than 50k images, but the performance was terrible. With such a small number of
