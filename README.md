@@ -2,7 +2,8 @@
 
 
 ## TASK 1(full self-driving with collision avoidance):
-https://user-images.githubusercontent.com/29214569/151679395-7242ef99-3310-45c5-bc84-493e17c7a7f3.mp4
+https://user-images.githubusercontent.com/29214569/151681847-144bfa37-1817-4665-8097-7149bb9f8f89.mp4
+
 
 ## TASK 2(self-driving with steering desire):
 https://user-images.githubusercontent.com/29214569/151658079-6bdf933c-10d4-4b5c-98f0-cadd49be2656.mp4
