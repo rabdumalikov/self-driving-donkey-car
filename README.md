@@ -110,6 +110,9 @@ To remove distortion, we used **pinhole transformation**. The entire procedure w
 
 Also, you would need this [checkerboard image](https://docs.nvidia.com/vpi/checkerboard_10x7.pdf).
 
+### Example:
+
+<img src= "https://user-images.githubusercontent.com/29214569/151717113-b90aed7c-b38e-41f4-8576-3cd04caace28.jpeg" title="Original image" width="300" height="180"> <img src= "https://user-images.githubusercontent.com/29214569/151717112-029d3899-2261-4405-9935-1ae338fa4b39.jpeg" title="Undistorted image" width="300" height="180"> <img src= "https://user-images.githubusercontent.com/29214569/151717111-99915891-17a5-4e2f-b303-7c572be900aa.jpeg" title="Cropped image" width="300" height="180">
 
 ## Linear/Task1 model
 We created our own class **CustomLinear** which 99% is default linear model. 
@@ -120,13 +123,9 @@ When you try to find good cropping, the main thing you need to know is that you 
 
 Nevertheless, here is crop that we used **img=img[117:120,10:310]**.
 
-When you remove distortion from the image, you have less freedom for cropping.
-Consider the image below. You can see that distortion is only removed around the center.
+**P.S.** When you remove distortion from the image, you have less freedom for cropping.
+Consider the middle image above. You can see that distortion is only removed around the center.
 Thus it is the only part that makes sense to crop.
-
-**For Example:**
-
-<img src= "https://user-images.githubusercontent.com/29214569/151660471-8590a863-2ac3-4e92-ad08-ec041f77f2d2.jpeg" title="Undistorted image" width="600" height="400">
 
 ## How many images did we use?
 When we trained on less than 50k images, the performance was terrible. With such a small number of
