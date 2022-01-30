@@ -132,7 +132,9 @@ We don't have an answer for that. In our competition models, we applied image br
 
 ### Main takeaways:
 * The quantity isn't essential if the quality of your data is bad. *For better performance, steering should be smooth.*  The main reason for that is that we saw that our car was mainly doing sharp turns, leading to collisions in certain situations. But it is impossible to get smooth steering in the track with sharp turns.
-* Use a smaller frame rate(10 frames per second) during data collection since with higher frame rate you would get useless images with pretty much the same information.
+* Use a smaller frame rate(10 frames per second) during data collection since with higher frame rate you would get useless images with pretty much the same information. 
+
+  However, for inference, you can play around with frame rate, i.e., **increase it => more decisions** or **decrease it => fewer decisions** your car could make. For example, in the competition during the second round of task1, we increased the frame rate from 10 to 15 because we assumed that the car sees the obstacle but doesn't have enough frames to avoid it. 
 * Use higher resolution(320x240 or above). The resolution should be at least 320x240 because you won't be able to remove distortion for the lower resolutions. Another point for higher resolution is that later you can downscale your image without losing quality, but it won't be true if you need to upscale images.
 
 ## Behavior/Task2 model
@@ -157,6 +159,7 @@ We used around 350k images.
 ### Main takeaways:
 * Overall, it is hard to train a behavior model to drive on its own without any nudges.
 * Behavior states should be consistent with your data.
+* Use 10 frames per second for inference and data collection. With a higher frame rate, the performance of the behavioral model was terrible. 
   
 # Main Contributors
 Rustam Abdumalikov and Aral Acikalin
