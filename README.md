@@ -27,7 +27,7 @@ You can find the training data of both models [here](https://tartuulikool-my.sha
 
 For installing, donkeycar software, you have to follow steps from the official [documentation](https://docs.donkeycar.com/guide/install_software/#step-1-install-software-on-host-pc).
 
-**Note that:** you have to use version 4.3.0, i.e., the master branch.
+**Note that:** you have to use version 4.3.0, i.e., the **dev** branch.
 
 * **Installing prerequisites:**
   * Integrate modifications inside **donkeycar** folder:
