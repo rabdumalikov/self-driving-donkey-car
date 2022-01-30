@@ -118,7 +118,7 @@ Also, you would need this [checkerboard image](https://docs.nvidia.com/vpi/check
 We created our own class **CustomLinear** which 99% is default linear model. 
 The only thing we changed was that we added before the inference image preprocessing steps such as removing distortion and cropping an image.
 
-### How do we cropped our images?
+### How did we crop our images?
 When you try to find good cropping, the main thing you need to know is that you have to remove useless information from the images. You can get it right only empirically. But sometimes useless information might be useful. For example, during the competition for task 1 second-round, our car was always hitting a small toy at the end of the track. We discovered the reason for that later. We cropped from the bottom by the amount that our car couldn't see that toy. Before we thought: "why do we need that much information about the floor?".
 
 Nevertheless, here is crop that we used **img=img[117:120,10:310]**.
