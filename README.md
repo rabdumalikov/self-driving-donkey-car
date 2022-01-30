@@ -155,7 +155,7 @@ But we did a lot more work to make it work.
 
   https://user-images.githubusercontent.com/29214569/151705186-0a6cb852-ce32-41c2-b32c-a0cdb7f270fb.mp4
 
-* Our car tends to be stuck during right turns, so during the right turns we increase the throttle for a short time.
+* Our car tends to be stuck during right turns, so when our car turns to the right we increase the throttle for a short time.
 
 ### How did we collect data?
 At first, we tried to collect data properly by pressing the correct state before turning. This approach didn't work because of human error, and as a result, the data was inconsistent. Afterward, we wrote a script that consistently put behavior states based on steering angle value.
