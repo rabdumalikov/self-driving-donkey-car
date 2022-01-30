@@ -98,14 +98,22 @@ With those steps, you would be able to train **Behavioral** and **Linear** model
 
 # How it works:
 
-## Linear/Task1 model
-We created our own class **CustomLinear** which 99% is default linear model. 
-The only thing we changed was that we added before the inference image preprocessing steps such as removing distortion and cropping an image.
+## General stuff
 
-### Why do we removed distortion from the image?
+### Why do we remove distortion from the image?
 First of all, our solution is based on [NVIDIA end-to-end driving](https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf), where it is one of the 
 preprocessing step that they used. On top of that, in our tests, we saw that performance of the
 a model with distorted images is far from great. But it could be because of lighting conditions too.
+
+### How did we remove image distortion?
+To remove distortion, we used **pinhole transformation**. The entire procedure was described [here](https://automaticaddison.com/how-to-perform-camera-calibration-using-opencv/) and [here](https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html). 
+
+Also, you would need this [checkerboard image](https://docs.nvidia.com/vpi/checkerboard_10x7.pdf).
+
+
+## Linear/Task1 model
+We created our own class **CustomLinear** which 99% is default linear model. 
+The only thing we changed was that we added before the inference image preprocessing steps such as removing distortion and cropping an image.
 
 ### How do we cropped our images?
 When you try to find good cropping, the main thing you need to know is that you have to remove useless information from the images. You can get it right only empirically. But sometimes useless information might be useful. For example, during the competition for task 1 second-round, our car was always hitting a small toy at the end of the track. We discovered the reason for that later. We cropped from the bottom by the amount that our car couldn't see that toy. Before we thought: "why do we need that much information about the floor?".
