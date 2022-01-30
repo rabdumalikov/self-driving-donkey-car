@@ -145,6 +145,9 @@ But we did a lot more work to make it work.
 * Removed throttle prediction, because the data for that are inconsistent. 
 * Applied image augmentation before inference such as removing distortion and cropping.
 * Mapped *left* and *right* states to two different buttons for easier control. On top of that, *left* and *right* states are on a 0.30ms timer, after which the car automatically switches to a straight state. The main reason for using a timer is that we want to control the duration of being in a specific state, for example, during long turns. That's why by pressing a particular state button several times, the timer adds up.
+
+  https://user-images.githubusercontent.com/29214569/151705186-0a6cb852-ce32-41c2-b32c-a0cdb7f270fb.mp4
+
 * Our car tends to be stuck during right turns, so we increase the throttle for a short time.
 
 ### How did we collect data?
