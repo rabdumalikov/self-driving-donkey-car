@@ -101,9 +101,9 @@ With those steps, you would be able to train **Behavioral** and **Linear** model
 ## General stuff
 
 ### Why do we remove distortion from the image?
-First of all, our solution is based on [NVIDIA end-to-end driving](https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf), where it is one of the 
+First of all, our solution is based on [NVIDIA end-to-end driving](https://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf), removing distortion is one of the 
 preprocessing steps that they used. On top of that, in our tests, we saw that performance of the
-model with distorted images is far from great. But it could be because of lighting conditions too.
+models with distorted images is far from great. However, this could also be because of lighting conditions too.
 
 ### How did we remove image distortion?
 To remove distortion, we used **pinhole transformation**. The entire procedure was described [here](https://automaticaddison.com/how-to-perform-camera-calibration-using-opencv/) and [here](https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html). 
@@ -115,7 +115,7 @@ Also, you would need this [checkerboard image](https://docs.nvidia.com/vpi/check
 <img src= "https://user-images.githubusercontent.com/29214569/151717113-b90aed7c-b38e-41f4-8576-3cd04caace28.jpeg" title="Original image" width="300" height="180"> <img src= "https://user-images.githubusercontent.com/29214569/151717112-029d3899-2261-4405-9935-1ae338fa4b39.jpeg" title="Undistorted image" width="300" height="180"> <img src= "https://user-images.githubusercontent.com/29214569/151717111-99915891-17a5-4e2f-b303-7c572be900aa.jpeg" title="Cropped image" width="300" height="180">
 
 ## Linear/Task1 model
-We created our own class **CustomLinear**, which 99% is default linear model. 
+We created our own class **CustomLinear**, which 99% is the default linear model. 
 The only thing we changed was that we added before the inference image preprocessing steps such as removing distortion and cropping an image.
 
 ### How did we crop our images?
@@ -151,17 +151,17 @@ But we did a lot more work to make it work.
 ### Things that we added/changed:
 * Removed throttle prediction because the data for that are inconsistent. 
 * Applied image augmentation before inference such as removing distortion and cropping.
-* Mapped *left* and *right* states to two different buttons for easier control. On top of that, *left* and *right* states are on a 0.30ms timer, after which the car automatically switches to a straight state. The main reason for using a timer is that we want to control the duration of being in a specific state, for example, during long turns. That's why by pressing a particular state button several times, the timer adds up.
+* Mapped *left* and *right* states to two different buttons for easier control. On top of that, the *left* and *right* states are on a 0.30ms timer, after which the car automatically switches to a straight state. The main reason for using a timer is that we want to control the duration of being in a specific state, for example, during long turns. That's why by pressing a particular state button several times, the timer adds up.
 
   https://user-images.githubusercontent.com/29214569/151705186-0a6cb852-ce32-41c2-b32c-a0cdb7f270fb.mp4
 
-* Our car tends to be stuck during right turns, so when our car turns to the right we increase the throttle for a short time.
+* Our car tends to be stuck during right turns, so when our car turns to the right, we increase the throttle for a short time.
 
 ### How did we collect data?
 At first, we tried to collect data properly by pressing the correct state before turning. This approach didn't work because of human error, and as a result, the data was inconsistent. Afterward, we wrote a script that consistently put behavior states based on steering angle value.
 
 ### Cropping:
-Was the same as for **CustomLinear**.
+Cropping was the same as for **CustomLinear**.
 
 ### How many images did we use?
 We used around 350k images.
