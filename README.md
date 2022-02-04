@@ -27,7 +27,7 @@ You can find the training data of both models [here](https://tartuulikool-my.sha
 
 For installing, donkeycar software, you have to follow the steps from the official [documentation](https://docs.donkeycar.com/guide/install_software/#step-1-install-software-on-host-pc).
 
-**Note that:** you have to use version 4.3.0, i.e., the **dev** branch.
+**NOTE THAT:** You have to use version 4.3.0. After you cloned the repo, the default branch would be **dev**, and that is what you need. That's why don't do the step ```git checkout master```.
 
 * **Installing prerequisites:**
   * Integrate modifications inside **donkeycar** folder:
@@ -50,11 +50,21 @@ For installing, donkeycar software, you have to follow the steps from the offici
     python set_correct_behavior_offset.py <path_to_data>
     ```
   * **Remove distortion from images and crop them:**
+  
+    **NOTE:** This script modifies original images.
+    
     ```sh
     # For a big dataset it might take up to two hours.
     python transform_images.py <path_to_data>
     ```
+    **Example( Before and After ):**
+    
+    <img src= "https://user-images.githubusercontent.com/29214569/151717113-b90aed7c-b38e-41f4-8576-3cd04caace28.jpeg" title="Original image" width="300" height="180"> <img src= "https://user-images.githubusercontent.com/29214569/151717111-99915891-17a5-4e2f-b303-7c572be900aa.jpeg" title="Cropped image" width="300" height="180">
+    
   * **Flips images and adjust the corresponding meta-information in catalogs:**
+
+    **NOTE:** This script creates a copy of the *tub* folder inside ```<path_to_data>```, adds the suffix 'Flipped', and flips images of copied *tub*.
+    
     ```sh
     # Leo wrote this script. All credits go to him.
     python flipper.py -c <path_to_mycar> -t <path_to_data>
