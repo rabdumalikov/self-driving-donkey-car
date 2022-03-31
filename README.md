@@ -7,9 +7,11 @@ https://user-images.githubusercontent.com/29214569/151681847-144bfa37-1817-4665-
 ## TASK 2(self-driving with steering desire):
 https://user-images.githubusercontent.com/29214569/151658079-6bdf933c-10d4-4b5c-98f0-cadd49be2656.mp4
 
-## Full Competition:
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/cjm21muWZG4/0.jpg)](https://www.youtube.com/watch?v=cjm21muWZG4)
+## Full Competition video:
 
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=cjm21muWZG4"><img src="https://img.youtube.com/vi/cjm21muWZG4/0.jpg" alt="IMAGE ALT TEXT"></a>
+</div>
 
 
 In our solution, we used two different versions of donkeycar 4.2.0 and 4.3.0.
