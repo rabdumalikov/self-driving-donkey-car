@@ -1,6 +1,5 @@
 # self-driving-donkey-car
 
-
 ## TASK 1(full self-driving with collision avoidance):
 https://user-images.githubusercontent.com/29214569/151681847-144bfa37-1817-4665-8097-7149bb9f8f89.mp4
 
@@ -8,6 +7,8 @@ https://user-images.githubusercontent.com/29214569/151681847-144bfa37-1817-4665-
 ## TASK 2(self-driving with steering desire):
 https://user-images.githubusercontent.com/29214569/151658079-6bdf933c-10d4-4b5c-98f0-cadd49be2656.mp4
 
+## Full Competition:
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/cjm21muWZG4/0.jpg)](https://www.youtube.com/watch?v=cjm21muWZG4)
 
 
 
@@ -182,7 +183,7 @@ We used around 350k images.
 * Use 10 frames per second for inference and data collection. With a higher frame rate, the performance of the behavioral model was terrible. 
   
 # Main Contributors
-Rustam Abdumalikov and Aral Acikalin
+Rustam Abdumalikov, Aral Acikalin and Gianluca Rubino
 
 # Licence
 Boost Software License( Version 1.0 )
