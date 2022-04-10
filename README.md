@@ -1,14 +1,21 @@
 # self-driving-donkey-car
 
-## `Preparation` and `Competition` videos:
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oBzAagklxBM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-<div align="center">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/oBzAagklxBM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+## Videos:
+
+<table style="width:100%">
+  <tr>
+    <th>How we started</th>
+    <th>Full Competition</th>
+  </tr>
+  <tr>
+    <td> <div align="center">
   <a href="https://www.youtube.com/watch?v=oBzAagklxBM"><img src="https://img.youtube.com/vi/oBzAagklxBM/0.jpg" alt="How we started"></a>
+</div> </td>
+    <td> <div align="center">
   <a href="https://www.youtube.com/watch?v=cjm21muWZG4"><img src="https://img.youtube.com/vi/cjm21muWZG4/0.jpg" alt="Competition"></a>
-</div>
+</div></td>
+  </tr>
+</table>
 
 ## TASK 1(full self-driving with collision avoidance):
 https://user-images.githubusercontent.com/29214569/151681847-144bfa37-1817-4665-8097-7149bb9f8f89.mp4
