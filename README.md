@@ -1,18 +1,17 @@
 # self-driving-donkey-car
 
+## `Preparation` and `Competition` videos:
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=oBzAagklxBM"><img src="https://img.youtube.com/vi/oBzAagklxBM/0.jpg" alt="How we started"></a>
+  <a href="https://www.youtube.com/watch?v=cjm21muWZG4"><img src="https://img.youtube.com/vi/cjm21muWZG4/0.jpg" alt="Competition"></a>
+</div>
+
 ## TASK 1(full self-driving with collision avoidance):
 https://user-images.githubusercontent.com/29214569/151681847-144bfa37-1817-4665-8097-7149bb9f8f89.mp4
 
 
 ## TASK 2(self-driving with steering desire):
 https://user-images.githubusercontent.com/29214569/151658079-6bdf933c-10d4-4b5c-98f0-cadd49be2656.mp4
-
-## Full Competition video:
-
-<div align="center">
-  <a href="https://www.youtube.com/watch?v=cjm21muWZG4"><img src="https://img.youtube.com/vi/cjm21muWZG4/0.jpg" alt="IMAGE ALT TEXT"></a>
-</div>
-
 
 In our solution, we used two different versions of donkeycar 4.2.0 and 4.3.0.
 For training models, we used version 4.3.0 due to the availability of augmentations and transformations.
@@ -22,12 +21,6 @@ For training models, we used version 4.3.0 due to the availability of augmentati
 On the car, we used 4.2.0. However, it makes more sense to switch to 4.3.0 because maintaining a single code base would be easier.
 Right now, we have to maintain the same set of classes for *Behavioral* and *Linear* models, which is far from convenient. 
 The only thing that stopped us from switching to 4.3.0 was the tedious integration process.
-
-# Intermediate progress video:
-
-<div align="center">
-  <a href="https://www.youtube.com/watch?v=oBzAagklxBM"><img src="https://img.youtube.com/vi/oBzAagklxBM/0.jpg" alt="IMAGE ALT TEXT"></a>
-</div>
 
 # Data
 You can find the training data of both models [here](https://tartuulikool-my.sharepoint.com/:u:/g/personal/abdumali_ut_ee/Efh7AFRC8W1EiCAOUMqieiABL5MP3ss03D6UHnHFZ-c0BQ?e=e3puE2).
