@@ -23,6 +23,12 @@ On the car, we used 4.2.0. However, it makes more sense to switch to 4.3.0 becau
 Right now, we have to maintain the same set of classes for *Behavioral* and *Linear* models, which is far from convenient. 
 The only thing that stopped us from switching to 4.3.0 was the tedious integration process.
 
+# Intermediate progress
+
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=oBzAagklxBM"><img src="https://img.youtube.com/vi/oBzAagklxBM/0.jpg" alt="IMAGE ALT TEXT"></a>
+</div>
+
 # Data
 You can find the training data of both models [here](https://tartuulikool-my.sharepoint.com/:u:/g/personal/abdumali_ut_ee/Efh7AFRC8W1EiCAOUMqieiABL5MP3ss03D6UHnHFZ-c0BQ?e=e3puE2).
 
