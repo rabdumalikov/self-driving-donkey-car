@@ -2,6 +2,10 @@
 
 ## `Preparation` and `Competition` videos:
 <div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oBzAagklxBM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div align="center">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/oBzAagklxBM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   <a href="https://www.youtube.com/watch?v=oBzAagklxBM"><img src="https://img.youtube.com/vi/oBzAagklxBM/0.jpg" alt="How we started"></a>
   <a href="https://www.youtube.com/watch?v=cjm21muWZG4"><img src="https://img.youtube.com/vi/cjm21muWZG4/0.jpg" alt="Competition"></a>
 </div>
